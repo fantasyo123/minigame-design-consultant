@@ -1,0 +1,2563 @@
+{
+  "schemaVersion": "1.0.0",
+  "units": {
+    "distance": "world_unit",
+    "time": "second",
+    "velocity": "world_unit/second",
+    "acceleration": "world_unit/second²"
+  },
+  "global": {
+    "playerWidth": 0.36,
+    "playerHeight": 0.4,
+    "groundY": 0,
+    "fixedStepSeconds": 0.008333333333333333,
+    "startX": 0,
+    "speedTransition": "instant at zone bounds",
+    "collision": "AABB strict overlap; swept/substepped to prevent tunneling",
+    "hitPolicy": "each obstacle counts at most once per attempt; no knockback; fail when mistakes > maxMistakes",
+    "coinPolicy": "circle vs player AABB inclusive; once per attempt",
+    "timePolicy": "simulation time only; paused during pause/background",
+    "successPolicy": "reach length while time <= limit and mistakes <= max and coins >= required",
+    "finishPolicy": "on reach length without enough coins, fail immediately",
+    "tieBreak": "process collision/coins first, then failure for mistakes > max or time > limit, then finish",
+    "retryPolicy": "reset time, position, velocity, mistakes, coins, obstacle phases and zones; rewards only once per completed attempt"
+  },
+  "levels": [
+    {
+      "id": 1,
+      "phase": "教学",
+      "theme": "樱花草地",
+      "focus": "首次跳跃",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "coins"
+      ],
+      "length": 26.8,
+      "baseSpeed": 2.6,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 19,
+      "maxMistakes": 2,
+      "coinsRequired": 2,
+      "reward": {
+        "completionCoins": 25
+      },
+      "targetFailureRatePercent": 5,
+      "obstacleDensityPer10": 1.12,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 13.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 18.8,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 22.3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 23.8,
+          "y": 0.22,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 2,
+      "phase": "教学",
+      "theme": "樱花草地",
+      "focus": "连续落地再跳",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins"
+      ],
+      "length": 30.4,
+      "baseSpeed": 2.6,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 20,
+      "maxMistakes": 2,
+      "coinsRequired": 3,
+      "reward": {
+        "completionCoins": 30
+      },
+      "targetFailureRatePercent": 8,
+      "obstacleDensityPer10": 1.32,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 12.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 17.6,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 22.4,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 25.9,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 27.4,
+          "y": 0.22,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 3,
+      "phase": "教学",
+      "theme": "樱花草地",
+      "focus": "观察金币轨迹",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins"
+      ],
+      "length": 29.5,
+      "baseSpeed": 2.7,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 19,
+      "maxMistakes": 2,
+      "coinsRequired": 3,
+      "reward": {
+        "completionCoins": 35
+      },
+      "targetFailureRatePercent": 10,
+      "obstacleDensityPer10": 1.36,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 12.5,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 17.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 21.5,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 25.0,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 26.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 12.5,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 21.5,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 4,
+      "phase": "变奏",
+      "theme": "樱花草地",
+      "focus": "间距变奏",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins"
+      ],
+      "length": 34.0,
+      "baseSpeed": 2.8,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 21,
+      "maxMistakes": 1,
+      "coinsRequired": 3,
+      "reward": {
+        "completionCoins": 40
+      },
+      "targetFailureRatePercent": 12,
+      "obstacleDensityPer10": 1.47,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 12.5,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 17.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 21.5,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 26.0,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 29.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 31.0,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 12.5,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 26.0,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 5,
+      "phase": "变奏",
+      "theme": "樱花草地",
+      "focus": "呼吸关",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "coins"
+      ],
+      "length": 26.8,
+      "baseSpeed": 2.6,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 19,
+      "maxMistakes": 2,
+      "coinsRequired": 2,
+      "reward": {
+        "completionCoins": 45
+      },
+      "targetFailureRatePercent": 6,
+      "obstacleDensityPer10": 1.12,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 13.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 18.8,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 22.3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 23.8,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 13.4,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 18.8,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 6,
+      "phase": "变奏",
+      "theme": "奶油森林",
+      "focus": "移动障碍入门",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle"
+      ],
+      "length": 32.8,
+      "baseSpeed": 2.8,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 20,
+      "maxMistakes": 1,
+      "coinsRequired": 3,
+      "reward": {
+        "completionCoins": 50
+      },
+      "targetFailureRatePercent": 15,
+      "obstacleDensityPer10": 1.52,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "moving",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 12.2,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 16.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "moving",
+          "x": 20.6,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 4.7124
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 24.8,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 28.3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 29.8,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 12.2,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 24.8,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 7,
+      "phase": "变奏",
+      "theme": "奶油森林",
+      "focus": "移动障碍观察",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle"
+      ],
+      "length": 36.0,
+      "baseSpeed": 2.9,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 21,
+      "maxMistakes": 1,
+      "coinsRequired": 3,
+      "reward": {
+        "completionCoins": 55
+      },
+      "targetFailureRatePercent": 16,
+      "obstacleDensityPer10": 1.67,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 12.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "moving",
+          "x": 16.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 3.1416
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 20.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 24.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h06",
+          "type": "moving",
+          "x": 28.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 31.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 33.0,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 12.0,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 28.0,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 8,
+      "phase": "变奏",
+      "theme": "奶油森林",
+      "focus": "节奏地带入门",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 35.5,
+      "baseSpeed": 3.0,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 20,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 60
+      },
+      "targetFailureRatePercent": 18,
+      "obstacleDensityPer10": 1.69,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "moving",
+          "x": 11.9,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 15.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 19.7,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "moving",
+          "x": 23.6,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h06",
+          "type": "static",
+          "x": 27.5,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 31.0,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 32.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.9,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 27.5,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 29.5,
+          "speedMultiplier": 1.08
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "phase": "变奏",
+      "theme": "奶油森林",
+      "focus": "速度与间距",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 34.5,
+      "baseSpeed": 3.0,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 20,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 65
+      },
+      "targetFailureRatePercent": 19,
+      "obstacleDensityPer10": 1.74,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "moving",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 11.7,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 15.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "moving",
+          "x": 19.1,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 4.7124
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 22.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h06",
+          "type": "static",
+          "x": 26.5,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 30.0,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 31.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.7,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 26.5,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 28.5,
+          "speedMultiplier": 1.08
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "phase": "机制叠加",
+      "theme": "奶油森林",
+      "focus": "呼吸关",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins"
+      ],
+      "length": 31.0,
+      "baseSpeed": 2.7,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 20,
+      "maxMistakes": 2,
+      "coinsRequired": 3,
+      "reward": {
+        "completionCoins": 70
+      },
+      "targetFailureRatePercent": 8,
+      "obstacleDensityPer10": 1.29,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 13.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 18.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 23.0,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 26.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 28.0,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 13.0,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 23.0,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 11,
+      "phase": "机制叠加",
+      "theme": "云朵工坊",
+      "focus": "移动障碍与金币",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 38.8,
+      "baseSpeed": 3.0,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 21,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 75
+      },
+      "targetFailureRatePercent": 25,
+      "obstacleDensityPer10": 1.8,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "moving",
+          "x": 11.8,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 15.6,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 19.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "moving",
+          "x": 23.2,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h06",
+          "type": "static",
+          "x": 27.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h07",
+          "type": "static",
+          "x": 30.8,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 34.3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 35.8,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.8,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 30.8,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 32.8,
+          "speedMultiplier": 1.08
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "phase": "机制叠加",
+      "theme": "云朵工坊",
+      "focus": "速度与移动障碍",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 38.2,
+      "baseSpeed": 3.1,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 21,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 80
+      },
+      "targetFailureRatePercent": 28,
+      "obstacleDensityPer10": 1.83,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "moving",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 11.7,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 15.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "moving",
+          "x": 19.1,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 4.7124
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 22.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h06",
+          "type": "static",
+          "x": 26.5,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h07",
+          "type": "moving",
+          "x": 30.2,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 3.1416
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 33.7,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 35.2,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.7,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 30.2,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 32.2,
+          "speedMultiplier": 1.08
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "phase": "机制叠加",
+      "theme": "云朵工坊",
+      "focus": "连续跳与金币",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 41.2,
+      "baseSpeed": 3.1,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 22,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 85
+      },
+      "targetFailureRatePercent": 30,
+      "obstacleDensityPer10": 1.94,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 11.6,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "moving",
+          "x": 15.2,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 3.1416
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 18.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 22.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h06",
+          "type": "moving",
+          "x": 26.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        },
+        {
+          "id": "h07",
+          "type": "static",
+          "x": 29.6,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h08",
+          "type": "static",
+          "x": 33.2,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 36.7,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 38.2,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.6,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 33.2,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 35.2,
+          "speedMultiplier": 1.08
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "phase": "机制叠加",
+      "theme": "云朵工坊",
+      "focus": "连续跳与速度",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 40.5,
+      "baseSpeed": 3.2,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 21,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 90
+      },
+      "targetFailureRatePercent": 33,
+      "obstacleDensityPer10": 1.98,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "moving",
+          "x": 11.5,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 15.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 18.5,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "moving",
+          "x": 22.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h06",
+          "type": "static",
+          "x": 25.5,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h07",
+          "type": "static",
+          "x": 29.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h08",
+          "type": "moving",
+          "x": 32.5,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 4.7124
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 36.0,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 37.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.5,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 32.5,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 34.5,
+          "speedMultiplier": 1.1
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "phase": "机制叠加",
+      "theme": "云朵工坊",
+      "focus": "呼吸关",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins"
+      ],
+      "length": 34.4,
+      "baseSpeed": 2.8,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 21,
+      "maxMistakes": 2,
+      "coinsRequired": 3,
+      "reward": {
+        "completionCoins": 95
+      },
+      "targetFailureRatePercent": 15,
+      "obstacleDensityPer10": 1.45,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 12.6,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 17.2,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 21.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 26.4,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 29.9,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 31.4,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 12.6,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 26.4,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": []
+    },
+    {
+      "id": 16,
+      "phase": "机制叠加",
+      "theme": "星光夜市",
+      "focus": "交替障碍",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 40.5,
+      "baseSpeed": 3.2,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 21,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 100
+      },
+      "targetFailureRatePercent": 36,
+      "obstacleDensityPer10": 1.98,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 11.5,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "moving",
+          "x": 15.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 3.1416
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 18.5,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 22.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h06",
+          "type": "moving",
+          "x": 25.5,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        },
+        {
+          "id": "h07",
+          "type": "static",
+          "x": 29.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h08",
+          "type": "static",
+          "x": 32.5,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 36.0,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 37.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.5,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 32.5,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 34.5,
+          "speedMultiplier": 1.1
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "phase": "机制叠加",
+      "theme": "星光夜市",
+      "focus": "多机制综合",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 43.2,
+      "baseSpeed": 3.3,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 22,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 105
+      },
+      "targetFailureRatePercent": 40,
+      "obstacleDensityPer10": 2.08,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "moving",
+          "x": 11.4,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 14.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 18.2,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "moving",
+          "x": 21.6,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h06",
+          "type": "static",
+          "x": 25.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h07",
+          "type": "static",
+          "x": 28.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h08",
+          "type": "moving",
+          "x": 31.8,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 4.7124
+        },
+        {
+          "id": "h09",
+          "type": "static",
+          "x": 35.2,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 38.7,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 40.2,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.4,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 35.2,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 37.2,
+          "speedMultiplier": 1.1
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "phase": "考核",
+      "theme": "星光夜市",
+      "focus": "稳定节奏考核",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 43.2,
+      "baseSpeed": 3.3,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 22,
+      "maxMistakes": 0,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 110
+      },
+      "targetFailureRatePercent": 50,
+      "obstacleDensityPer10": 2.08,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "moving",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 11.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 14.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "moving",
+          "x": 18.2,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 4.7124
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 21.6,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h06",
+          "type": "static",
+          "x": 25.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h07",
+          "type": "moving",
+          "x": 28.4,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 3.1416
+        },
+        {
+          "id": "h08",
+          "type": "static",
+          "x": 31.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h09",
+          "type": "static",
+          "x": 35.2,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 38.7,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 40.2,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.4,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 35.2,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 37.2,
+          "speedMultiplier": 1.1
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "phase": "考核",
+      "theme": "星光夜市",
+      "focus": "精准连跳考核",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 45.7,
+      "baseSpeed": 3.4,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 22,
+      "maxMistakes": 0,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 115
+      },
+      "targetFailureRatePercent": 58,
+      "obstacleDensityPer10": 2.19,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "static",
+          "x": 11.3,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h03",
+          "type": "moving",
+          "x": 14.6,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 3.1416
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 17.9,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "static",
+          "x": 21.2,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h06",
+          "type": "moving",
+          "x": 24.5,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        },
+        {
+          "id": "h07",
+          "type": "static",
+          "x": 27.8,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h08",
+          "type": "static",
+          "x": 31.1,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h09",
+          "type": "moving",
+          "x": 34.4,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h10",
+          "type": "static",
+          "x": 37.7,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 41.2,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 42.7,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.3,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 37.7,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 39.7,
+          "speedMultiplier": 1.1
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "phase": "考核",
+      "theme": "星光夜市",
+      "focus": "终章回顾与呼吸",
+      "mechanics": [
+        "jump",
+        "static_obstacle",
+        "consecutive_jump",
+        "coins",
+        "moving_obstacle",
+        "speed_zone"
+      ],
+      "length": 38.8,
+      "baseSpeed": 3.0,
+      "jump": {
+        "initialVelocity": 5.2,
+        "gravity": 14.0,
+        "coyoteSeconds": 0.08,
+        "bufferSeconds": 0.1
+      },
+      "timeLimitSeconds": 21,
+      "maxMistakes": 1,
+      "coinsRequired": 4,
+      "reward": {
+        "completionCoins": 120
+      },
+      "targetFailureRatePercent": 35,
+      "obstacleDensityPer10": 1.8,
+      "obstacles": [
+        {
+          "id": "h01",
+          "type": "static",
+          "x": 8.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h02",
+          "type": "moving",
+          "x": 11.8,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 1.5708
+        },
+        {
+          "id": "h03",
+          "type": "static",
+          "x": 15.6,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h04",
+          "type": "static",
+          "x": 19.4,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h05",
+          "type": "moving",
+          "x": 23.2,
+          "width": 0.45,
+          "height": 0.32,
+          "liftAmplitude": 0.18,
+          "periodSeconds": 2.4,
+          "phaseRadians": 0.0
+        },
+        {
+          "id": "h06",
+          "type": "static",
+          "x": 27.0,
+          "width": 0.45,
+          "height": 0.32
+        },
+        {
+          "id": "h07",
+          "type": "static",
+          "x": 30.8,
+          "width": 0.45,
+          "height": 0.32
+        }
+      ],
+      "coins": [
+        {
+          "id": "c01",
+          "x": 1.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c02",
+          "x": 3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c03",
+          "x": 4.5,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c04",
+          "x": 34.3,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c05",
+          "x": 35.8,
+          "y": 0.22,
+          "radius": 0.22
+        },
+        {
+          "id": "c06",
+          "x": 11.8,
+          "y": 0.85,
+          "radius": 0.22
+        },
+        {
+          "id": "c07",
+          "x": 30.8,
+          "y": 0.85,
+          "radius": 0.22
+        }
+      ],
+      "speedZones": [
+        {
+          "id": "z01",
+          "startX": 6,
+          "endX": 32.8,
+          "speedMultiplier": 1.1
+        }
+      ]
+    }
+  ]
+}
